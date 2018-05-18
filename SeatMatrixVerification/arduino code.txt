@@ -1,0 +1,41 @@
+int val = 0;
+
+
+int L1= 2;
+int L2 = 3;
+int Status = 4;
+
+
+void setup()
+{
+  Serial.begin(9600);
+ 
+  pinMode(L1, OUTPUT);
+  pinMode(L2, OUTPUT);
+  pinMode(Status, OUTPUT);
+}
+void loop()
+{
+  delay(100);
+}
+void serialEvent() // To check if there is any data on the Serial line
+{
+  while (Serial.available())
+  {
+    val = Serial.parseInt();
+    if(val == 100)   
+    {
+     //Turn the LED into red 
+      digitalWrite(L1, HIGH);
+      
+    }
+    else if(val == 101){
+      digitalWrite(L2, LOW);
+    }
+    else if(val == 108){
+      digitalWrite(Status, Low);
+    }
+    
+  }
+Serial.println("Succesfully received everything.");
+}
